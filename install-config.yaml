@@ -1,0 +1,53 @@
+apiVersion: v1
+baseDomain: example.local
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform:
+    vsphere:
+      cpus: 1
+      coresPerSocket: 8
+      memoryMB: 16384
+      osDisk:
+        diskSizeGB: 120
+  replicas: 2
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform:
+    vsphere:
+      cpus: 1
+      coresPerSocket: 4
+      memoryMB: 8192
+      osDisk:
+        diskSizeGB: 60
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: ocp
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  vsphere:
+    apiVIP: 192.168.201.200
+    cluster: JTI-Lab-Cluster
+    datacenter: JTI-Lab
+    defaultDatastore: LUN_RAID5
+    ingressVIP: 192.168.201.201
+    network: JTILab - VM Network
+    password: StSud1rm4n@2023!
+    username: ib
+    vCenter: -lab-vcenter.ibm.com
+publish: External
+pullSecret: ''
+sshKey: |
+  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIID6dwedRfCG72ycu4PcGvK3hYNNIlIIw50aLSZn/HNd root@ocp-bastion.ocp.example.local
