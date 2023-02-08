@@ -5,9 +5,11 @@ Openshift installation on VMware (from scratch) requires a good amount of planni
 High Level Steps for OCP cluster installation are as below :
 
 1. Deployment Architecture & Solution Design
-2. Installation Pre-requisites 
-3. OCP Cluster Installation
-4. Post Installation Tasks
+Here we are planning to deploy a 7 node cluster including 3 masters and 4 workers.
+
+3. Installation Pre-requisites 
+4. OCP Cluster Installation
+5. Post Installation Tasks
 
 
 
