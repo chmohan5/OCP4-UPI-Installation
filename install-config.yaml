@@ -4,35 +4,33 @@ compute:
 - architecture: amd64
   hyperthreading: Enabled
   name: worker
-  replicas: 0
+  replicas: 0  # Must be set to 0 for User Provisioned Installation as worker nodes will be manually deployed.
 controlPlane:
   architecture: amd64
   hyperthreading: Enabled
   name: master
   replicas: 3
 metadata:
-  name: ocp
+  name: ocp  # OCP Cluster Name
 networking:
   clusterNetwork:
-  - cidr: 10.10.1.0/24
+  - cidr: 10.128.0.0/14
     hostPrefix: 23
   machineNetwork:
-  - cidr: 10.0.0.0/16
+  - cidr: 10.0.0.0/16 
   networkType: OpenShiftSDN
   serviceNetwork:
   - 172.30.0.0/16
 platform:
   vsphere:
-    apiVIP: 192.168.201.200
-    cluster: JTI-Lab-Cluster
-    datacenter: JTI-Lab
-    defaultDatastore: LUN_RAID5
-    ingressVIP: 192.168.201.201
-    network: JTILab - VM Network
-    password: StSud1rm4n@2023!
-    username: ib
-    vCenter: -lab-vcenter.ibm.com
+    cluster: Server5
+    datacenter: SELRTP
+    folder: "/SELRTP/Server-5-b/OCP Training India/cp4s-learning"
+    network: 1010p
+    password: Figure8number!
+    username: cmohan5@selvc.rtp
+    vCenter: selvc.rtp.raleigh.ibm.com
 publish: External
-pullSecret: ''
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfZDhiNTgzMjQ3YmZiNDk2YjhhZmQ4ZTgzZGE4MDczMTk6VEFWQUY0NDJHMjA0VlZRT1FEOVZOOTVLV09FRlRRSjgwUk04VVhPQ1JTUUFYOTFGOFJOM1ozVFo3SU1aNjdPWg==","email":"chmohan5@in.ibm.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfZDhiNTgzMjQ3YmZiNDk2YjhhZmQ4ZTgzZGE4MDczMTk6VEFWQUY0NDJHMjA0VlZRT1FEOVZOOTVLV09FRlRRSjgwUk04VVhPQ1JTUUFYOTFGOFJOM1ozVFo3SU1aNjdPWg==","email":"chmohan5@in.ibm.com"},"registry.connect.redhat.com":{"auth":"fHVoYy1wb29sLTQxYjRjYmI1LWU3NTMtNDI2NC1iOWU1LTJkNzc3ZGEyMDNkMjpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmhZalkxTnpsaVlqbGlNV1UwTlRFNE9XTTRORGsxWTJGaVkyRTNPREJrTVNKOS5meTc1bUR5UGRTWHB0QTI2QXVJMUhQVEJQSlJ4eGR3TENzM0ltMWduQjNwcDdQYzBwR2FMWEVxZTREU1BGb0xEOXkyOGw4ckxzZF8wdzdjZWJsOHBuME56c010RGtEaFRaQ241dzRrNlVlZlo0NnljN01qd3FpOFdlQ0o4ajg3ZE16ZHROZTc1MVpkZWR5V1BFQ0JDdXh3ckxFS1RPQnhiYk51N2tnM2Y2S3NOc1A4RkpvNmNXVHU5NkpnUkRlM0dWYy0wejdCZlJIMVBJT3BsZUgySjM5VWlPQVJrVmlBYUpNbktnZTFYYWlGeEd0aGhCUGxzdTdrcDA0T2N2OXZEa2pIdnY1SjBPSFBXMWszWF9mRF9BTHUxTmk5VDlncVRRaDNOTkYtRWxpSjZTUlU4OGtWRzR4WWFrMTN5enh6c29NYU1QNjBoMXdObGlhSS00b0wxa3o3ekJ5MnptR25QajZYLW4tN0JlNXh0TFJ2SXNxNFJCMzg5MW1LYlBGVTNWY3BfV1RwTmIxRDc4WXJad3hLMktINjJrRDhtNXNIb1JFTElBdWxuWGF3c0dtWkNXUXZVUlNjRFRnZ3lhWXV6akMzblZxREhQUnZwaHZfY000WE1hWk1zRTFmOFBZMFdYWG1ZUkVTS3ZkY0VaREJWZkdtNFU2TkxiTERHcVFpTVBka21BVjdwN2xUcldJc3B6em1NN2xIblhEb3FudVlmYVdITWN6aVc5bjhjTlM5bG4xR05UV3JVQWhyYXRMeVZUTXM1NGllTnAtR1pDTmxUZG5qSGI0b0ptRWpoM1AzOVNQOVo1cVZVejFOcmhjQVVjeTIyUzB2QUQtLXVHNUV2R0lwNXllU1dkeGhST3lzZ2dPRTNyb1lwcENrekw1VEhSVGRWZERhMk9Hbw==","email":"chmohan5@in.ibm.com"},"registry.redhat.io":{"auth":"fHVoYy1wb29sLTQxYjRjYmI1LWU3NTMtNDI2NC1iOWU1LTJkNzc3ZGEyMDNkMjpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmhZalkxTnpsaVlqbGlNV1UwTlRFNE9XTTRORGsxWTJGaVkyRTNPREJrTVNKOS5meTc1bUR5UGRTWHB0QTI2QXVJMUhQVEJQSlJ4eGR3TENzM0ltMWduQjNwcDdQYzBwR2FMWEVxZTREU1BGb0xEOXkyOGw4ckxzZF8wdzdjZWJsOHBuME56c010RGtEaFRaQ241dzRrNlVlZlo0NnljN01qd3FpOFdlQ0o4ajg3ZE16ZHROZTc1MVpkZWR5V1BFQ0JDdXh3ckxFS1RPQnhiYk51N2tnM2Y2S3NOc1A4RkpvNmNXVHU5NkpnUkRlM0dWYy0wejdCZlJIMVBJT3BsZUgySjM5VWlPQVJrVmlBYUpNbktnZTFYYWlGeEd0aGhCUGxzdTdrcDA0T2N2OXZEa2pIdnY1SjBPSFBXMWszWF9mRF9BTHUxTmk5VDlncVRRaDNOTkYtRWxpSjZTUlU4OGtWRzR4WWFrMTN5enh6c29NYU1QNjBoMXdObGlhSS00b0wxa3o3ekJ5MnptR25QajZYLW4tN0JlNXh0TFJ2SXNxNFJCMzg5MW1LYlBGVTNWY3BfV1RwTmIxRDc4WXJad3hLMktINjJrRDhtNXNIb1JFTElBdWxuWGF3c0dtWkNXUXZVUlNjRFRnZ3lhWXV6akMzblZxREhQUnZwaHZfY000WE1hWk1zRTFmOFBZMFdYWG1ZUkVTS3ZkY0VaREJWZkdtNFU2TkxiTERHcVFpTVBka21BVjdwN2xUcldJc3B6em1NN2xIblhEb3FudVlmYVdITWN6aVc5bjhjTlM5bG4xR05UV3JVQWhyYXRMeVZUTXM1NGllTnAtR1pDTmxUZG5qSGI0b0ptRWpoM1AzOVNQOVo1cVZVejFOcmhjQVVjeTIyUzB2QUQtLXVHNUV2R0lwNXllU1dkeGhST3lzZ2dPRTNyb1lwcENrekw1VEhSVGRWZERhMk9Hbw==","email":"chmohan5@in.ibm.com"}}}'
 sshKey: |
-  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIID6dwedRfCG72ycu4PcGvK3hYNNIlIIw50aLSZn/HNd root@ocp-bastion.ocp.example.local
+  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBMNEg9CCHRG2Y9A9n30tBENcTwVzoNWnPd7dyBuMgV root@ocp-bastion.ocp.example.local
