@@ -4,32 +4,17 @@ compute:
 - architecture: amd64
   hyperthreading: Enabled
   name: worker
-  platform:
-    vsphere:
-      cpus: 1
-      coresPerSocket: 8
-      memoryMB: 16384
-      osDisk:
-        diskSizeGB: 120
-  replicas: 2
+  replicas: 0
 controlPlane:
   architecture: amd64
   hyperthreading: Enabled
   name: master
-  platform:
-    vsphere:
-      cpus: 1
-      coresPerSocket: 4
-      memoryMB: 8192
-      osDisk:
-        diskSizeGB: 60
   replicas: 3
 metadata:
-  creationTimestamp: null
   name: ocp
 networking:
   clusterNetwork:
-  - cidr: 10.128.0.0/14
+  - cidr: 10.10.1.0/24
     hostPrefix: 23
   machineNetwork:
   - cidr: 10.0.0.0/16
