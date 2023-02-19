@@ -7,10 +7,9 @@ High Level Steps for OCP cluster installation are as below :
 1. Deployment Architecture & Solution Design
 Here we are planning to deploy a 7 node cluster including 3 masters and 4 workers.
 
+Deployment Architecture Diagram for 7 node cluster :
+
+
 3. Installation Pre-requisites 
 4. OCP Cluster Installation
 5. Post Installation Tasks
-
-
-
-
